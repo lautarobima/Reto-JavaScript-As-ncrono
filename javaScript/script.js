@@ -1,8 +1,9 @@
 // (todo) Conseguir API de los cocteles
 
 // Coctel (aleatorio)
+
 const getCoctail = async () => {
-    const url = "www.thecocktaildb.com/api/json/v1/1/random.php";
+    const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
     try {
         const response = await fetch(url);
