@@ -1,0 +1,105 @@
+:root{
+    --backgroundColor: #230312;
+    --windowColor: #1D000D;
+    --buttonColor: #C52D2F;
+    --higlightColor: #dd526e;
+    --textColor: #F1FFFF;
+}
+
+
+html, body {
+
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+
+    background-color: var(--backgroundColor);
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    height: 100%;
+    color: var(--textColor);
+
+    overflow: hidden;
+
+}
+
+
+div {
+
+    &.MainDiv {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        height: 100%;
+
+    }
+
+    &#favoriteContainer,&#catalogContainer {
+
+        width: 100%;
+        height: 200px;
+
+        border-top: 2px solid var(--textColor);
+        border-bottom: 0px solid var(--textColor);
+        margin: 12px 0px 12px 5px;
+
+    }
+
+}
+
+
+main {
+
+    margin: 0;
+    padding: 0 0 0 50px; 
+    width: 100%;
+    height: 100%;
+
+}
+
+
+header {
+
+    background-color: var(--windowColor);
+    width: 100%;
+    & > h1{text-align: center;}
+
+}
+
+
+footer {
+
+    background-color: var(--windowColor);
+    padding: 0 0 2px 0; 
+    width: 100%;
+    & > p{text-align: center;}
+}
+
+
+button {
+
+    width: 110px;
+    height: 28px;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    border: 2px solid var(--buttonColor);
+    border-radius: 3px;
+    
+    margin-left: 10px;
+
+    padding: 0;
+    font: inherit;  
+    cursor: pointer;
+    outline: none; 
+    appearance: none;
+
+    box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-out;
+
+}
+button:hover {border: 3px solid var(--higlightColor); background-color: var(--windowColor);}
