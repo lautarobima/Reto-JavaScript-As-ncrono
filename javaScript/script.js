@@ -2,7 +2,7 @@
 
 // Coctel (aleatorio)
 
-const getCoctail = async () => {
+const getCocktail = async () => {
     const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
     try {
@@ -17,4 +17,5 @@ const getCoctail = async () => {
         console.error(`Error in fetching data: ${error}`);
     }
 }
-getCoctail();
+getCocktail();
+
