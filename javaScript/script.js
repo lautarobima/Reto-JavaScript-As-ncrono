@@ -25,4 +25,28 @@ const getCocktailData = (cocktailData) => {
     // Va a estar en español porque no sale las instrucciones en algunos cocteles en español
     const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
     console.log(idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions);
+
+    const ingredientsArray = getIngredients(cocktailData["drinks"][0]);
+    console.log(ingredientsArray);
+};
+
+const getIngredients = (cocktailData) => {
+    const ingredientsArray = Object.keys(cocktailData)
+        .filter(key => key.startsWith("strIngredient"))
+        .map(key => cocktailData[key]);
+
+    console.log(ingredientsArray);
+
+    // Esto es un crimen de guerra pero los breaks funcionan raro en JS entonces toco asi
+    let searchNull = true;
+    let i = 0;
+    while (searchNull) {
+        if (ingredientsArray[i] >= ingredientsArray.length || ingredientsArray[i] == null) {
+            searchNull = false;
+        } else {
+            i += 1;
+        }
+    }
+
+    return ingredientsArray.splice(0, i);
 };
