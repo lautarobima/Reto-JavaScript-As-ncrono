@@ -64,9 +64,16 @@ const getFavorites = () => {
 };
 getFavorites();
 
+const getFavoriteCard = async (id) => {
+    const catalogContainer = document.getElementById("catalogContainer");
+    console.log(id);
+    //catalogContainer.appendChild(cocktailCard(getCocktailById(id)));
+    catalogContainer.appendChild(cocktailCard(await getCocktailById(id)));
+};
+
 const cocktailCardFavorites = (item, favorite = false) => {
     const innerHtml =`
-    <div class="itemContainer">
+    <div class="itemContainer" onclick="getFavoriteCard(${item.id})">
         <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
         <div class="headerContainer" id="${item.id}">
             <h2>${item.id}. ${item.name}</h2>

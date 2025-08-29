@@ -1,6 +1,7 @@
 function cocktailCard(cocktailInfo, favorite = false){
     const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailInfo;
     const cocktailIngredientsArray = getIngredients(cocktailInfo)
+
     const innerHtml =`
 <div class="itemContainer">
     <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
@@ -17,6 +18,7 @@ function cocktailCard(cocktailInfo, favorite = false){
     `;
 
     const node = document.createElement("div");
+
     node.innerHTML = innerHtml;
 
     const btn = node.querySelector(".favoriteButton");

@@ -43,6 +43,26 @@ const getCocktailRandom = async () => {
     //console.log(cocktailData)
     catalogContainer.appendChild(cocktailCard(cocktailData));
 };
+// Get cocktail by ID
+const getCocktailById = async (id) => {
+    console.log(id);
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const cocktailData = await response.json();
+        // ?????????????????????
+        console.log(cocktailData["drinks"][0]);
+        //return cocktailData["drinks"][0];
+        return cocktailData["drinks"][0];
+    } catch (error) {
+        console.error(`Error in fetching data: ${error}`);
+    }
+};
 
 const getCocktailData = (cocktailData) => {
     // Va a estar en español porque no sale las instrucciones en algunos cocteles en español
@@ -102,6 +122,8 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     <p>${strInstructions}</p>
 </div>`
 };
+
+
 
 //addCocktail.addEventListener("click", getCocktailRandom);
 addCocktail.addEventListener("click", getCocktailRandom);
