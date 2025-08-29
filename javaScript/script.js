@@ -54,7 +54,7 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     console.log(`Imagen: ${strDrinkThumb}`);
     // Toca hacer esto distinto cuando llegue el HTML
     console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
-    console.log(`Instrucciones:\n\t${strInstructions}`);*/
+    console.log(`Instrucciones:\n\t${strInstructions}`);
     catalogContainer.innerHTML += `
 <div class="itemContainer">
     <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
@@ -67,7 +67,5 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     <p>${strCategory}</p>
     <p>${cocktailIngredientsArray.join(", ")}</p>
     <p>${strInstructions}</p>
-</div>
-
-    console.log(`Instrucciones:\n\t${strInstructions}`);
+</div>`
 };
