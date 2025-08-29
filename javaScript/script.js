@@ -1,11 +1,11 @@
-const catalogContainer = document.getElementById("catalogContainer");
-const addCocktail = document.getElementById("add-cocktail");
-
 // Conseguir API de los cocteles
 
 // Coctel (aleatorio)
 const getCocktail = async () => {
     const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+
+    // Progress bar
+    
 
     try {
         const response = await fetch(url);
@@ -13,26 +13,14 @@ const getCocktail = async () => {
             throw new Error(`HTTP Error: ${response.status}`);
         }
 
-        const coctailData = await response.json();
-        console.log(coctailData);
-        getCocktailData(coctailData);
+        const cocktailData = await response.json();
+        return cocktailData["drinks"][0];
     } catch (error) {
         console.error(`Error in fetching data: ${error}`);
     }
 }
 
-// Conseguir data del coctel
-const getCocktailData = (cocktailData) => {
-    console.log(cocktailData["drinks"][0]);
-    // Va a estar en español porque no sale las instrucciones en algunos cocteles en español
-    // CUIDADO QUE EN OCACIONES strDrink devuelve 410 Gone, es decir que el coctel ya no existe, muy raro, pero me paso
-    const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
-    console.log(idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions);
 
-    const ingredientsArray = getIngredients(cocktailData["drinks"][0]);
-
-    presentCocktail(cocktailData, ingredientsArray);
-};
 
 const getIngredients = (cocktailData) => {
     const ingredientsArray = Object.keys(cocktailData)
@@ -59,21 +47,18 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
 
     // Esto se cambia despues con alguna mejor presentacion o algo asi
-    /*
     console.log(`ID: ${idDrink}`);
     console.log(`Alcohol: ${strAlcoholic}`);
     console.log(`Categoria: ${strCategory}`);
     console.log(`Nombre: ${strDrink}`);
     console.log(`Imagen: ${strDrinkThumb}`);
-    console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
-    console.log(`Instrucciones:\n\t${strInstructions}`);
     // Toca hacer esto distinto cuando llegue el HTML
     console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
-    console.log(`Instrucciones:\n\t${strInstructions}`);*/
+    console.log(`Instrucciones:\n\t${strInstructions}`);
     catalogContainer.innerHTML += `
 <div class="itemContainer">
     <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
-    <div class="headerContainer" id="${idDrink}">
+    <div class="headerContainer">
         <h2>${idDrink}. ${strDrink}</h2>
         <button class="favoriteButton">★</button>
     </div>
@@ -82,8 +67,5 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     <p>${strCategory}</p>
     <p>${cocktailIngredientsArray.join(", ")}</p>
     <p>${strInstructions}</p>
-</div>
-    `;
+</div>`
 };
-
-addCocktail.addEventListener("click", getCocktail);

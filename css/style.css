@@ -195,6 +195,12 @@ button {
 
 }
 
+#progress-bar {
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 button:hover {
     width: 160px; 
     height: 34px; 
@@ -258,3 +264,4 @@ button:hover {
         }
     }
 }
+
