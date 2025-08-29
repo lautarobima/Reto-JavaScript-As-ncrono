@@ -52,8 +52,19 @@ div {
 
         gap: 20px;
     }
-    &#catalogContainer{display: flex; max-height: fit-content;}
-    &#favoriteContainer{display: flex; flex-direction: row; overflow-x: auto; overflow-y: hidden;}
+    /* Gente, los estilos de una linea son jeroglificos para alguien que no los hizo, les pido que pongan lineas*/
+    &#catalogContainer{
+        display: flex; 
+        max-height: fit-content;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    &#favoriteContainer{
+        display: flex; 
+        flex-direction: row; 
+        overflow-x: auto; 
+        overflow-y: hidden;
+    }
 
     &.headerContainer {
 
