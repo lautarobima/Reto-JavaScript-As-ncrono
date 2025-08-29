@@ -1,3 +1,5 @@
+const catalogContainer = document.getElementById("catalogContainer");
+const addCocktail = document.getElementById("add-cocktail");
 // Conseguir API de los cocteles
 
 // Coctel (aleatorio)
@@ -20,7 +22,37 @@ const getCocktail = async () => {
     }
 }
 
+const getCocktailRandom = async () => {
+    /*
+    const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const cocktailData = await response.json();
+        console.log(cocktailData);
+        presentCocktail(cocktailData, getIngredients(cocktailData["drinks"][0]));
+        //getCocktailData(coctailData);
+    } catch (error) {
+        console.error(`Error in fetching data: ${error}`);
+    }*/
+    const cocktailData = await getCocktail();
+    //console.log(cocktailData)
+    catalogContainer.appendChild(cocktailCard(cocktailData));
+};
+
+const getCocktailData = (cocktailData) => {
+    // Va a estar en español porque no sale las instrucciones en algunos cocteles en español
+    // CUIDADO QUE EN OCACIONES strDrink devuelve 410 Gone, es decir que el coctel ya no existe, muy raro, pero me paso
+    const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
+
+    const ingredientsArray = getIngredients(cocktailData["drinks"][0]);
+
+    presentCocktail(cocktailData, ingredientsArray);
+};
 
 const getIngredients = (cocktailData) => {
     const ingredientsArray = Object.keys(cocktailData)
@@ -47,6 +79,7 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
 
     // Esto se cambia despues con alguna mejor presentacion o algo asi
+    /*
     console.log(`ID: ${idDrink}`);
     console.log(`Alcohol: ${strAlcoholic}`);
     console.log(`Categoria: ${strCategory}`);
@@ -69,3 +102,6 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     <p>${strInstructions}</p>
 </div>`
 };
+
+//addCocktail.addEventListener("click", getCocktailRandom);
+addCocktail.addEventListener("click", getCocktailRandom);
