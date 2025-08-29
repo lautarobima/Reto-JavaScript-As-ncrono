@@ -20,7 +20,6 @@ const getCocktail = async () => {
         console.error(`Error in fetching data: ${error}`);
     }
 }
-getCocktail();
 
 // Conseguir data del coctel
 const getCocktailData = (cocktailData) => {
@@ -60,6 +59,7 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     const { idDrink, strAlcoholic, strCategory, strDrink, strDrinkThumb, strInstructions } = cocktailData["drinks"][0];
 
     // Esto se cambia despues con alguna mejor presentacion o algo asi
+    /*
     console.log(`ID: ${idDrink}`);
     console.log(`Alcohol: ${strAlcoholic}`);
     console.log(`Categoria: ${strCategory}`);
@@ -69,6 +69,21 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     console.log(`Instrucciones:\n\t${strInstructions}`);
     // Toca hacer esto distinto cuando llegue el HTML
     console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
-    console.log(`Instrucciones:\n\t${strInstructions}`);
+    console.log(`Instrucciones:\n\t${strInstructions}`);*/
+    catalogContainer.innerHTML += `
+<div class="itemContainer">
+    <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
+    <div class="headerContainer" id="${idDrink}">
+        <h2>${idDrink}. ${strDrink}</h2>
+        <button class="favoriteButton">★</button>
+    </div>
+    <img src="${strDrinkThumb}" alt="${strDrink} image">
+    <p>${strAlcoholic}</p>
+    <p>${strCategory}</p>
+    <p>${cocktailIngredientsArray.join(", ")}</p>
+    <p>${strInstructions}</p>
+</div>
+    `;
 };
 
+addCocktail.addEventListener("click", getCocktail);
