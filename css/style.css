@@ -129,7 +129,7 @@ footer {
 button {
 
     align-self: center;
-    width: 114px;
+    width: 150px;
     height: 32px;
     margin: 2px 1px;
     background-color: var(--windowColor);
@@ -148,4 +148,12 @@ button {
 
 }
 
-button:hover {width: 116px; height: 34px; margin: 0px; border: 4px solid var(--higlightColor); background-color: var(--backgroundColor);}
+button:hover {
+    width: 160px; 
+    height: 34px; 
+    margin: 0px; 
+    border: 4px 
+    solid var(--higlightColor); 
+    background-color: 
+    var(--backgroundColor);
+}

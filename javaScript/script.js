@@ -1,4 +1,5 @@
 const catalogContainer = document.getElementById("catalogContainer");
+const addCocktail = document.getElementById("add-cocktail");
 
 // Conseguir API de los cocteles
 
