@@ -65,3 +65,8 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
     console.log(`Instrucciones:\n\t${strInstructions}`);
 };
+    // Toca hacer esto distinto cuando llegue el HTML
+    console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
+    console.log(`Instrucciones:\n\t${strInstructions}`);
+};
+

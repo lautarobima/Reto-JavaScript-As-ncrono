@@ -1,0 +1,150 @@
+:root{
+    --backgroundColor: #230312;
+    --windowColor: #1D000D;
+    --buttonColor: #C52D2F;
+    --higlightColor: #dd526e;
+    --textColor: #F1FFFF;
+}
+
+
+html, body {
+
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+
+    background-color: var(--backgroundColor);
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    height: 100%;
+    color: var(--textColor);
+
+    overflow: hidden;
+
+}
+
+
+div {
+
+    &.MainDiv {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        height: 100%;
+
+    }
+
+    &#favoriteContainer,&#catalogContainer {
+
+        width: 100%;
+        min-height: 350px;
+
+        border-top: 2px solid var(--textColor);
+        border-bottom: 0px solid var(--textColor);
+        padding: 20px 0 0 20px;
+        margin: 12px 0px 12px 5px;
+        box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.3);
+
+        gap: 20px;
+    }
+    &#catalogContainer{display: grid; max-height: fit-content;}
+    &#favoriteContainer{display: flex; flex-direction: row; overflow-x: auto; overflow-y: hidden;}
+
+    &.headerContainer {
+
+        display: flex;
+        align-items: self-start;
+        justify-items: center;
+        gap: 10px;
+        margin: 21.44px 0;
+        h2,h1{margin: 2px 0;}
+
+    }
+
+    &.itemContainer {
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        padding: 10px;
+        width: 280px;
+        height: auto;
+
+        align-items: center;
+        justify-items: center;
+
+        background-color: var(--windowColor);
+        border-top: 2px solid var(--textColor);
+        box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.3); 
+
+        & > img{height: 170px; width: 170px; align-self: center; justify-self: center;}
+        & button.favoriteButton{width: 28px; height: 28px; color: var(--buttonColor);}
+        & button.favoriteButton:hover{color: var(--higlightColor)}
+        & > div{margin: 0px;}
+        & > p{text-wrap: wrap; margin: 0 10px;}
+
+    }
+
+}
+
+
+main {
+
+    margin: 0;
+    padding: 0 0 0 50px; 
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+
+header {
+
+    background-color: var(--windowColor);
+    width: 100%;
+    & > h1{text-align: center;}
+
+}
+
+
+footer {
+
+    background-color: var(--windowColor);
+    padding: 0 0 2px 0; 
+    width: 100%;
+    & > p{text-align: center;}
+
+}
+
+
+button {
+
+    align-self: center;
+    width: 114px;
+    height: 32px;
+    margin: 2px 1px;
+    background-color: var(--windowColor);
+    color: var(--textColor);
+    border: 2px solid var(--buttonColor);
+    border-radius: 3px;
+
+    padding: 0;
+    font: inherit;  
+    cursor: pointer;
+    outline: none; 
+    appearance: none;
+
+    box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-out;
+
+}
+button:hover {width: 116px; height: 34px; margin: 0px; border: 4px solid var(--higlightColor); background-color: var(--backgroundColor);}
