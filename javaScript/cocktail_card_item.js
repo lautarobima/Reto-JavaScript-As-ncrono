@@ -27,7 +27,8 @@ function cocktailCard(cocktailInfo, favorite = false){
         else{
             addFavorite(cocktailInfo);
         }
-        refreshFavorites();
+        //refreshFavorites();
+        refreshFavoritesNew();
     })
     return node;
 }
@@ -37,7 +38,8 @@ window.addEventListener(
     "load",
     async ()=>{
         const catalogContainer = document.getElementById("catalogContainer");
-        refreshFavorites();
+        //refreshFavorites();
+        refreshFavoritesNew();
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
