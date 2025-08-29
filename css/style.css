@@ -52,7 +52,7 @@ div {
 
         gap: 20px;
     }
-    &#catalogContainer{display: grid; max-height: fit-content;}
+    &#catalogContainer{display: flex; max-height: fit-content;}
     &#favoriteContainer{display: flex; flex-direction: row; overflow-x: auto; overflow-y: hidden;}
 
     &.headerContainer {
