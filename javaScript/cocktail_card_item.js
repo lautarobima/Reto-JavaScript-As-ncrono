@@ -45,4 +45,4 @@ window.addEventListener(
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
 
     }
-)
+) 
