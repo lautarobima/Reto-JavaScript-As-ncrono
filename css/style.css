@@ -39,6 +39,9 @@ div {
 
     &#favoriteContainer,&#catalogContainer {
 
+        align-items: center;
+        justify-content: center;
+
         width: auto;
         min-height: 350px;
 
@@ -48,7 +51,7 @@ div {
         margin: 12px 0px 0 5px;
         box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.3);
 
-        gap: 20px;
+        gap: 150px;
     }
     &#catalogContainer{
         display: grid; 
@@ -63,6 +66,7 @@ div {
         flex-direction: row; 
         overflow-x: auto; 
         overflow-y: hidden;
+
         scrollbar-color: var(--textColor) var(--backgroundColor);
     }
 
@@ -99,11 +103,26 @@ div {
         overflow-y: auto;
         overflow-x: hidden;
 
+    
         & > img{height: 170px; width: 170px; align-self: center; justify-self: center;}
         & button.favoriteButton{width: 28px; height: 28px; color: var(--buttonColor);}
         & button.favoriteButton:hover{color: var(--higlightColor)}
         & > div{margin: 0px;}
         & > p{text-wrap: wrap; margin: 0 10px;}
+
+        & > div {
+            & > img{height: 170px; width: 170px; align-self: center; justify-self: center;}
+            & button.favoriteButton{width: 28px; height: 28px; color: var(--buttonColor);}
+            & button.favoriteButton:hover{color: var(--higlightColor)}
+            & > div{margin: 0px;}
+            & > p{text-wrap: wrap; margin: 0 10px;}
+            
+            &.descriptCont {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            
+        }
 
     }
 
@@ -173,4 +192,50 @@ button:hover {
     solid var(--higlightColor); 
     background-color: 
     var(--backgroundColor);
+}
+
+
+
+@media only screen and (max-width: 1835px) {div {&#catalogContainer{grid-template-columns: auto auto auto;}}}
+@media only screen and (max-width: 1315px) {div {&#catalogContainer{grid-template-columns: auto auto;}}}
+@media only screen and (max-width: 838px) {
+    div {
+        &#catalogContainer{grid-template-columns: auto;}
+
+        &#favoriteContainer{
+            flex-direction: column; 
+            overflow-x: hidden; 
+            overflow-y: auto;
+            max-height: 350px;
+            gap: 20px;
+        }
+
+        &.itemContainer {
+
+            flex-direction: row;
+            gap: 10px;
+
+            padding: 10px;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 350px;
+            max-height: 350px;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            & > div {
+                & > img{height: 170px; width: 170px; align-self: center; justify-self: center;}
+                & button.favoriteButton{width: 28px; height: 28px; color: var(--buttonColor);}
+                & button.favoriteButton:hover{color: var(--higlightColor)}
+                & > div{margin: 0px;}
+                & > p{text-wrap: wrap; margin: 0 10px;}
+                
+                &.descriptCont {
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                }
+            }
+        }
+    }
 }
