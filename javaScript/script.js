@@ -4,6 +4,9 @@
 const getCocktail = async () => {
     const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
+    // Progress bar
+    
+
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -51,5 +54,20 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     console.log(`Imagen: ${strDrinkThumb}`);
     // Toca hacer esto distinto cuando llegue el HTML
     console.log(`Ingredientes: ${cocktailIngredientsArray.toString()}`);
+    console.log(`Instrucciones:\n\t${strInstructions}`);*/
+    catalogContainer.innerHTML += `
+<div class="itemContainer">
+    <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
+    <div class="headerContainer">
+        <h2>${idDrink}. ${strDrink}</h2>
+        <button class="favoriteButton">★</button>
+    </div>
+    <img src="${strDrinkThumb}" alt="${strDrink} image">
+    <p>${strAlcoholic}</p>
+    <p>${strCategory}</p>
+    <p>${cocktailIngredientsArray.join(", ")}</p>
+    <p>${strInstructions}</p>
+</div>
+
     console.log(`Instrucciones:\n\t${strInstructions}`);
 };
