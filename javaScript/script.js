@@ -1,3 +1,5 @@
+const catalogContainer = document.getElementById("catalogContainer");
+
 // Conseguir API de los cocteles
 
 // Coctel (aleatorio)
