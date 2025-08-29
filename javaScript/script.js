@@ -7,6 +7,9 @@ const addCocktail = document.getElementById("add-cocktail");
 const getCocktail = async () => {
     const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
+    // Progress bar
+    
+
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -73,7 +76,7 @@ const presentCocktail = (cocktailData, cocktailIngredientsArray) => {
     catalogContainer.innerHTML += `
 <div class="itemContainer">
     <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
-    <div class="headerContainer" id="${idDrink}">
+    <div class="headerContainer">
         <h2>${idDrink}. ${strDrink}</h2>
         <button class="favoriteButton">★</button>
     </div>
