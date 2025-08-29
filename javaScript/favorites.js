@@ -18,6 +18,9 @@ function addFavorite(item){
         favs.push(item);
         writeFavorites(favs);
     }
+    //console.log(item);
+    //const { idDrink, strDrink } = item;
+    
 }
 
 function removeFavorite(item){
@@ -34,3 +37,9 @@ function refreshFavorites(){
         favoriteContainer.appendChild(cocktailCard(fav, true));
     });
 }
+
+const getFavorites = () => {
+    const favoritesData = readFavorites();
+    console.log(favoritesData);
+};
+getFavorites();
