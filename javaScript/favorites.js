@@ -70,10 +70,21 @@ const getFavorites = () => {
 getFavorites();
 
 const getFavoriteCard = async (id) => {
+    // Revisar que no este el mismo coctel en el catalogo
     const catalogContainer = document.getElementById("catalogContainer");
-    console.log(id);
-    //catalogContainer.appendChild(cocktailCard(getCocktailById(id)));
-    catalogContainer.appendChild(cocktailCard(await getCocktailById(id)));
+    const cocktailHeaders = [...catalogContainer.querySelectorAll(".headerContainer")];
+    const cocktailIds = Array.from(cocktailHeaders).map (cocktail => cocktail.id);
+
+    //console.log(cocktailIds.includes(id));
+    if (!cocktailIds.includes(id.toString())) {
+        //console.log(id);
+        //catalogContainer.appendChild(cocktailCard(getCocktailById(id)));
+        catalogContainer.appendChild(cocktailCard(await getCocktailById(id)));
+    } else {
+        console.log("Esta en el catalogo");
+    }
+
+    
 };
 
 const cocktailCardFavorites = (item, favorite = false) => {
