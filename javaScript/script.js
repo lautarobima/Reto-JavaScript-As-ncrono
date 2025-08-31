@@ -7,7 +7,12 @@ const getCocktail = async () => {
     const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
     // Progress bar
-    
+    var loader = document.getElementById("loader");
+
+    if (loader) {
+        loader.classList.remove("loaderinvisible");
+        loader.classList.add("loadervisible");
+    }
 
     try {
         const response = await fetch(url);
@@ -19,6 +24,9 @@ const getCocktail = async () => {
         return cocktailData["drinks"][0];
     } catch (error) {
         console.error(`Error in fetching data: ${error}`);
+    } finally {
+        loader.classList.remove("loadervisible");
+        loader.classList.add("loaderinvisible");
     }
 }
 
@@ -47,9 +55,10 @@ const getCocktailRandom = async () => {
 const getCocktailById = async (id) => {
     console.log(id);
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
-
+    
     try {
         const response = await fetch(url);
+        
         if (!response.ok) {
             throw new Error(`HTTP Error: ${response.status}`);
         }
@@ -61,7 +70,7 @@ const getCocktailById = async (id) => {
         return cocktailData["drinks"][0];
     } catch (error) {
         console.error(`Error in fetching data: ${error}`);
-    }
+    } 
 };
 
 const getCocktailData = (cocktailData) => {
