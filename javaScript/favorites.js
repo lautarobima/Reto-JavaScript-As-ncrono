@@ -20,14 +20,19 @@ function addFavorite(item){
     }*/
     //console.log(item);
     const favs = readFavorites();
-    const { idDrink, strDrink } = item;
-    const newItem = {
-        id: idDrink,
-        name: strDrink
-    };
-    favs.push(newItem);
-    writeFavorites(favs);
-
+    //console.log(favs);
+    //console.log(item);
+    if (!favs.some(favItem => (favItem.id === item.idDrink))) {
+        const { idDrink, strDrink } = item;
+        const newItem = {
+            id: idDrink,
+            name: strDrink
+        };
+        favs.push(newItem);
+        writeFavorites(favs);
+    } else {
+        console.log("Ya esta en favoritos");
+    }
 }
 
 function removeFavorite(item){
