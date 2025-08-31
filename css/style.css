@@ -58,12 +58,20 @@ div {
     &#catalogContainer{
         display: grid; 
         grid-template-columns: auto auto auto auto;
+        
         row-gap: 30px;
 
         max-height: fit-content;
     }
+    &#catalogContainer:first-child{
+        order:2;
+    }
 
     &#favoriteContainer{
+
+        min-height: 120px;
+        padding: 0 0 0 20px;
+
         display: flex; 
         flex-direction: row; 
         justify-content: flex-start;
@@ -71,6 +79,7 @@ div {
         overflow-y: hidden;
 
         scrollbar-color: var(--textColor) var(--backgroundColor);
+        scrollbar-width: thin;
     }
 
 
@@ -85,19 +94,19 @@ div {
 
     }
 
-    &.itemContainer {
+    &.itemContainer,&.favItemContainer {
 
         display: flex;
         flex-direction: column;
         gap: 10px;
 
         padding: 10px;
-        min-width: 280px;
-        max-width: 280px;
+        min-width: 320px;
+        max-width: 320px;
         max-height: 460px;
 
         align-items: center;
-        justify-items: center;
+        justify-items:right;
 
         background-color: var(--windowColor);
         border-top: 2px solid var(--textColor);
@@ -114,6 +123,13 @@ div {
         & > p{text-wrap: wrap; margin: 0 10px;}
 
         & > div {
+
+            max-width: 200px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
             & > img{height: 170px; width: 170px; align-self: center; justify-self: center;}
             & button.favoriteButton{width: 28px; height: 28px; color: var(--buttonColor);}
             & button.favoriteButton:hover{color: var(--higlightColor)}
@@ -121,12 +137,19 @@ div {
             & > p{text-wrap: wrap; margin: 0 10px;}
             
             &.descriptCont {
+                max-width: 280px;
                 overflow-y: auto;
                 overflow-x: hidden;
             }
             
         }
 
+    }
+    &.favItemContainer{
+        max-height: 100px;
+        & > div {
+            flex-direction: row;
+        }
     }
 
 }
@@ -214,9 +237,9 @@ button:hover {
         &#favoriteContainer{
             display: flex;
             justify-content: flex-start;
-            flex-direction: column; 
-            overflow-x: hidden; 
-            overflow-y: auto;
+            flex-direction: row; 
+            overflow-x: auto; 
+            overflow-y: hidden;
             max-height: 350px;
             gap: 20px;
         }

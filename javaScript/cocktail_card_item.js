@@ -5,15 +5,19 @@ function cocktailCard(cocktailInfo, favorite = false){
     const innerHtml =`
 <div class="itemContainer">
     <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
-    <div class="headerContainer" id="${idDrink}">
-        <h2>${idDrink}. ${strDrink}</h2>
-        <button class="favoriteButton">★</button>
+    <div>
+        <div class="headerContainer" id="${idDrink}">
+            <h2>${idDrink}. ${strDrink}</h2>
+            <button class="favoriteButton">★</button>
+        </div>
+        <img src="${strDrinkThumb}" alt="${strDrink} image">
     </div>
-    <img src="${strDrinkThumb}" alt="${strDrink} image">
-    <p>${strAlcoholic}</p>
-    <p>${strCategory}</p>
-    <p>${cocktailIngredientsArray.join(", ")}</p>
-    <p>${strInstructions}</p>
+    <div class="descriptCont">
+        <p>${strAlcoholic}</p>
+        <p>${strCategory}</p>
+        <p>${cocktailIngredientsArray.join(", ")}</p>
+        <p>${strInstructions}</p>
+    </div>
 </div>
     `;
 
@@ -42,7 +46,6 @@ window.addEventListener(
         const catalogContainer = document.getElementById("catalogContainer");
         //refreshFavorites();
         refreshFavoritesNew();
-        catalogContainer.appendChild(cocktailCard(await getCocktail()));
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
         catalogContainer.appendChild(cocktailCard(await getCocktail()));
