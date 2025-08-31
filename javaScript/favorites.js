@@ -73,11 +73,12 @@ const getFavoriteCard = async (id) => {
 
 const cocktailCardFavorites = (item, favorite = false) => {
     const innerHtml =`
-    <div class="favItemContainer" onclick="getFavoriteCard(${item.id})">
+    <div class="favItemContainer">
         <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
         <div class="headerContainer" id="${item.id}">
             <h2>${item.id}. ${item.name}</h2>
             <button class="favoriteButton">★</button>
+            <button class="get-to-catalog-button" onclick="getFavoriteCard(${item.id})">⬇︎</button>
         </div>
     </div>`
     const node = document.createElement("div");
