@@ -299,3 +299,12 @@ button:hover {
         }
     }
 }
+
+.get-to-catalog-button {
+    width: 28px;
+    color: var(--buttonColor);
+}
+.get-to-catalog-button:hover {
+    width: 28px;
+    color: var(--higlightColor);
+}

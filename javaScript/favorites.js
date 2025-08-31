@@ -20,14 +20,19 @@ function addFavorite(item){
     }*/
     //console.log(item);
     const favs = readFavorites();
-    const { idDrink, strDrink } = item;
-    const newItem = {
-        id: idDrink,
-        name: strDrink
-    };
-    favs.push(newItem);
-    writeFavorites(favs);
-
+    //console.log(favs);
+    //console.log(item);
+    if (!favs.some(favItem => (favItem.id === item.idDrink))) {
+        const { idDrink, strDrink } = item;
+        const newItem = {
+            id: idDrink,
+            name: strDrink
+        };
+        favs.push(newItem);
+        writeFavorites(favs);
+    } else {
+        console.log("Ya esta en favoritos");
+    }
 }
 
 function removeFavorite(item){
@@ -65,19 +70,31 @@ const getFavorites = () => {
 getFavorites();
 
 const getFavoriteCard = async (id) => {
+    // Revisar que no este el mismo coctel en el catalogo
     const catalogContainer = document.getElementById("catalogContainer");
-    console.log(id);
-    //catalogContainer.appendChild(cocktailCard(getCocktailById(id)));
-    catalogContainer.appendChild(cocktailCard(await getCocktailById(id)));
+    const cocktailHeaders = [...catalogContainer.querySelectorAll(".headerContainer")];
+    const cocktailIds = Array.from(cocktailHeaders).map (cocktail => cocktail.id);
+
+    //console.log(cocktailIds.includes(id));
+    if (!cocktailIds.includes(id.toString())) {
+        //console.log(id);
+        //catalogContainer.appendChild(cocktailCard(getCocktailById(id)));
+        catalogContainer.appendChild(cocktailCard(await getCocktailById(id)));
+    } else {
+        console.log("Esta en el catalogo");
+    }
+
+    
 };
 
 const cocktailCardFavorites = (item, favorite = false) => {
     const innerHtml =`
-    <div class="favItemContainer" onclick="getFavoriteCard(${item.id})">
+    <div class="favItemContainer">
         <!-- ID. es donde va el id, mientras que el CockTail es donde va el nombre-->
         <div class="headerContainer" id="${item.id}">
             <h2>${item.id}. ${item.name}</h2>
             <button class="favoriteButton">★</button>
+            <button class="get-to-catalog-button" onclick="getFavoriteCard(${item.id})">⬇︎</button>
         </div>
     </div>`
     const node = document.createElement("div");
